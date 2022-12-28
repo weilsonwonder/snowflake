@@ -14,8 +14,8 @@ type generator struct {
 
 // Id safely generates a unique positive number.
 func (z *generator) Id() int64 {
-	gen.Lock()
-	defer gen.Unlock()
+	z.Lock()
+	defer z.Unlock()
 
 	ts := time.Now().UnixMilli()
 	if ts < z.LastTimestamp {
